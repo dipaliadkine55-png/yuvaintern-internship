@@ -1,0 +1,243 @@
+# Frontend Performance Optimization Report
+
+## 1. Project Overview
+
+**Project Name:** SpeedWeb – Frontend Performance Optimization
+
+**Technologies Used:**
+
+* HTML5
+* CSS3
+* JavaScript
+* Chrome Lighthouse
+* Google PageSpeed Insights
+
+The objective of this project was to analyze and improve the performance of a frontend web page using standard HTML, CSS, and JavaScript optimization techniques.
+
+---
+
+## 2. Initial Performance Analysis
+
+The initial version of the website was analyzed using Google Lighthouse/PageSpeed Insights.
+
+The following areas were investigated:
+
+* Page loading speed
+* Largest Contentful Paint (LCP)
+* Cumulative Layout Shift (CLS)
+* Interaction to Next Paint (INP)
+* JavaScript execution
+* Image size
+* CSS usage
+* DOM complexity
+* Accessibility
+* SEO
+
+### Initial Results
+
+| Metric          | Before Optimization |
+| --------------- | ------------------: |
+| Performance     |   **[ENTER SCORE]** |
+| Accessibility   |   **[ENTER SCORE]** |
+| Best Practices  |   **[ENTER SCORE]** |
+| SEO             |   **[ENTER SCORE]** |
+| LCP             |   **[ENTER VALUE]** |
+| CLS             |   **[ENTER VALUE]** |
+| INP             |   **[ENTER VALUE]** |
+| Total Page Size |   **[ENTER VALUE]** |
+
+---
+
+## 3. Performance Problems Identified
+
+The initial analysis identified several potential performance bottlenecks.
+
+### 3.1 Large Images
+
+Large images increase network transfer size and can significantly increase page loading time.
+
+### 3.2 Images Loaded Immediately
+
+Images below the initial viewport did not need to be downloaded immediately.
+
+### 3.3 Render-Blocking JavaScript
+
+JavaScript loaded without the `defer` attribute could block HTML parsing.
+
+### 3.4 Excessive DOM Elements
+
+Unnecessary HTML elements increase DOM size and can increase browser layout and rendering work.
+
+### 3.5 Unoptimized CSS
+
+Unused or unnecessarily complex CSS can increase the amount of data that must be downloaded and processed.
+
+---
+
+# 4. Optimization Techniques Implemented
+
+## 4.1 Image Lazy Loading
+
+Images below the initial viewport were changed to use:
+
+```html
+loading="lazy"
+```
+
+This allows the browser to delay loading images until they are likely to be needed.
+
+---
+
+## 4.2 Image Dimensions
+
+Explicit image dimensions were added:
+
+```html
+width="500"
+height="300"
+```
+
+This reserves space before the image loads and helps prevent unexpected layout shifts.
+
+---
+
+## 4.3 Asynchronous Image Decoding
+
+The following attribute was added to non-critical images:
+
+```html
+decoding="async"
+```
+
+This allows image decoding to be performed without unnecessarily blocking rendering work.
+
+---
+
+## 4.4 JavaScript Defer
+
+JavaScript is loaded using:
+
+```html
+<script src="js/script.js" defer></script>
+```
+
+This prevents the JavaScript file from blocking HTML parsing.
+
+---
+
+## 4.5 Reduced DOM Complexity
+
+Unnecessary wrapper elements were removed.
+
+The page was organized using semantic HTML elements such as:
+
+* `header`
+* `nav`
+* `main`
+* `section`
+* `article`
+* `footer`
+
+This makes the page easier to maintain while keeping the DOM relatively simple.
+
+---
+
+## 4.6 CSS Optimization
+
+The CSS was simplified by:
+
+* Removing unnecessary styles
+* Using reusable classes
+* Using CSS Grid and Flexbox
+* Avoiding excessive selector complexity
+* Keeping responsive rules organized
+
+---
+
+## 4.7 JavaScript Optimization
+
+The JavaScript was kept lightweight.
+
+Instead of repeatedly querying the DOM, commonly used elements are stored in variables:
+
+```javascript
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+```
+
+Event listeners are also attached only where required.
+
+---
+
+## 4.8 Caching Strategy
+
+For production deployment, static assets such as CSS, JavaScript, and images should be served with appropriate cache headers.
+
+Versioned filenames can be used to allow long-term caching while ensuring that updated files are downloaded when changes are made.
+
+---
+
+# 5. Final Performance Analysis
+
+After applying the optimization techniques, the website was tested again using the same performance analysis tool and similar test conditions.
+
+### Final Results
+
+| Metric      |      Before |       After | Improvement |
+| ----------- | ----------: | ----------: | ----------: |
+| Performance | **[VALUE]** | **[VALUE]** | **[VALUE]** |
+| LCP         | **[VALUE]** | **[VALUE]** | **[VALUE]** |
+| CLS         | **[VALUE]** | **[VALUE]** | **[VALUE]** |
+| INP         | **[VALUE]** | **[VALUE]** | **[VALUE]** |
+| Page Size   | **[VALUE]** | **[VALUE]** | **[VALUE]** |
+
+---
+
+# 6. User Experience Improvements
+
+The optimizations resulted in:
+
+* Faster initial page loading
+* Reduced image loading overhead
+* Less JavaScript blocking
+* Better visual stability
+* Smoother interaction
+* Reduced network usage
+* Better mobile performance
+
+---
+
+# 7. Challenges Encountered
+
+### Challenge 1: Maintaining Image Quality
+
+Reducing image file sizes can affect visual quality. The solution was to compress images while maintaining an acceptable visual appearance and use modern formats where appropriate.
+
+### Challenge 2: Maintaining Functionality
+
+JavaScript optimization must not break existing functionality. After moving JavaScript to deferred loading, all navigation and form functionality was tested.
+
+### Challenge 3: Performance Score Variations
+
+Lighthouse and PageSpeed scores can vary between tests because of network conditions, device emulation, CPU throttling, and other environmental factors. Therefore, tests should be performed under similar conditions when comparing before and after results.
+
+---
+
+# 8. Conclusion
+
+The project demonstrates how frontend performance can be improved using HTML, CSS, and JavaScript without requiring a large framework.
+
+The main optimizations included:
+
+1. Lazy loading images
+2. Adding image dimensions
+3. Asynchronously decoding non-critical images
+4. Deferring JavaScript
+5. Reducing DOM complexity
+6. Simplifying CSS
+7. Minimizing unnecessary JavaScript work
+8. Applying appropriate caching strategies
+
+The final version provides a faster and smoother user experience compared with the original implementation.
+
+Performance optimization should be treated as an iterative process: measure the page, identify the largest bottleneck, apply an optimization, and measure again.

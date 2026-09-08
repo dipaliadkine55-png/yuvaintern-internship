@@ -1,0 +1,42 @@
+```javascript
+"use strict";
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
+
+/*
+ * Mobile navigation
+ */
+menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("active");
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
+});
+
+/*
+ * Close mobile menu after navigation
+ */
+navLinks.addEventListener("click", (event) => {
+    if (event.target.matches("a")) {
+        navLinks.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+    }
+});
+
+/*
+ * Form handling
+ */
+contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    formMessage.textContent =
+        "Thank you! Your message has been submitted.";
+
+    contactForm.reset();
+});
+```

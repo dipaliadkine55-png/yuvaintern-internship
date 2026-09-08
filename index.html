@@ -1,126 +1,187 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaaSify — Modern Workflow Solution</title>
-    <!-- Stylesheet -->
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A fast and responsive product landing page."
+    >
+
+    <title>Performance Optimized Website</title>
+
+    <!-- Critical stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- JavaScript does not block HTML parsing -->
+    <script src="js/script.js" defer></script>
 </head>
+
 <body>
 
-    <!-- Header & Navigation -->
-    <header class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">SaaSify<span>.</span></a>
-            
-            <!-- Mobile Toggle Button -->
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
-                <span class="hamburger"></span>
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo">SpeedWeb</a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+            >
+                ☰
             </button>
 
-            <!-- Navigation Links -->
-            <nav class="nav-menu" id="navMenu">
-                <ul class="nav-list">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#features" class="nav-link">Features</a></li>
-                    <li><a href="#pricing" class="nav-link">Pricing</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <a href="#get-started" class="btn btn-primary nav-cta">Get Started</a>
-            </nav>
-        </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container hero-container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Streamline Your Workflow in One Platform</h1>
-                    <p class="hero-subtitle">Scale your team's productivity with intuitive tools, automated tracking, and seamless cross-platform integrations.</p>
-                    <div class="hero-actions">
-                        <a href="#get-started" class="btn btn-primary">Start Free Trial</a>
-                        <a href="#features" class="btn btn-secondary">Learn More</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="image-placeholder">
-                        <div class="placeholder-card">
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <div class="placeholder-content">
-                                <h3>Interactive Dashboard Preview</h3>
-                                <p>Responsive UI Component</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Build Faster Websites</h1>
+
+                <p>
+                    A lightweight frontend project optimized for
+                    speed, responsiveness, and better user experience.
+                </p>
+
+                <a href="#features" class="btn">
+                    Explore Features
+                </a>
+            </div>
+
+            <div class="hero-image">
+                <img
+                    src="images/hero.jpg"
+                    width="800"
+                    height="500"
+                    fetchpriority="high"
+                    alt="Modern web development workspace"
+                >
             </div>
         </section>
 
-        <!-- Feature Highlights Section -->
-        <section id="features" class="features">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Engineered for Modern Teams</h2>
-                    <p>Everything you need to ship products faster and collaborate seamlessly.</p>
-                </div>
-                <div class="features-grid">
-                    <!-- Feature Card 1 -->
-                    <article class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Real-Time Sync</h3>
-                        <p>Keep your entire organization aligned with zero-latency cloud sync across all mobile and desktop devices.</p>
-                    </article>
-                    <!-- Feature Card 2 -->
-                    <article class="feature-card">
-                        <div class="feature-icon">🔒</div>
-                        <h3>Enterprise Security</h3>
-                        <p>End-to-end encryption, SOC-2 compliance, and role-based access control built right out of the box.</p>
-                    </article>
-                    <!-- Feature Card 3 -->
-                    <article class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Advanced Analytics</h3>
-                        <p>Gain deep visibility into team velocity, resource allocation, and project bottlenecks using AI-driven insights.</p>
-                    </article>
-                </div>
+        <section class="features" id="features">
+            <h2>Performance Features</h2>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <img
+                        src="images/feature-1.jpg"
+                        width="500"
+                        height="300"
+                        loading="lazy"
+                        decoding="async"
+                        alt="Optimized images"
+                    >
+
+                    <h3>Optimized Images</h3>
+
+                    <p>
+                        Images are compressed and lazy-loaded
+                        when they are outside the viewport.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <img
+                        src="images/feature-2.jpg"
+                        width="500"
+                        height="300"
+                        loading="lazy"
+                        decoding="async"
+                        alt="Clean JavaScript"
+                    >
+
+                    <h3>Efficient JavaScript</h3>
+
+                    <p>
+                        JavaScript is loaded asynchronously using
+                        the defer attribute.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <img
+                        src="images/feature-3.jpg"
+                        width="500"
+                        height="300"
+                        loading="lazy"
+                        decoding="async"
+                        alt="Responsive website"
+                    >
+
+                    <h3>Responsive Design</h3>
+
+                    <p>
+                        A simple DOM and efficient CSS provide
+                        a smooth experience across devices.
+                    </p>
+                </article>
+
             </div>
         </section>
+
+        <section class="about" id="about">
+            <h2>About This Project</h2>
+
+            <p>
+                This project demonstrates practical frontend
+                performance optimization using HTML, CSS,
+                and JavaScript.
+            </p>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Contact</h2>
+
+            <form id="contactForm">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                >
+
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                >
+
+                <button type="submit" class="btn">
+                    Submit
+                </button>
+            </form>
+
+            <p id="formMessage"></p>
+        </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer id="contact" class="footer">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <a href="#" class="logo">SaaSify<span>.</span></a>
-                <p>Empowering digital teams worldwide with next-generation productivity tools.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#">Integrations</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 SaaSify Inc. All rights reserved.</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2026 SpeedWeb. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
 </body>
 </html>
+```
+
+

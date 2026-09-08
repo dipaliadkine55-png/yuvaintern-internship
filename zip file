@@ -1,0 +1,15 @@
+Frontend-Performance-Optimization.zip
+│
+└── frontend-performance-optimization/
+    ├── index.html
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   └── script.js
+    ├── images/
+    │   ├── hero.jpg
+    │   ├── feature-1.jpg
+    │   ├── feature-2.jpg
+    │   └── feature-3.jpg
+    │
+    └── PERFORMANCE_REPORT.md
