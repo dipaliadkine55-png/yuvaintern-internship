@@ -1,407 +1,128 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="TechNova - Modern responsive digital solutions for businesses."
-    >
-
-    <title>TechNova | Digital Solutions</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- defer prevents JavaScript from blocking HTML parsing -->
-    <script src="js/script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow – Project Management Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
 </head>
-
 <body>
-
-    <!-- ================= HEADER ================= -->
-    <header class="header">
-
-        <nav class="navbar" aria-label="Main navigation">
-
-            <a href="#home" class="logo">
-                Tech<span>Nova</span>
-            </a>
-
-            <!-- Mobile menu button -->
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="navLinks"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Navigation links -->
-            <ul class="nav-links" id="navLinks">
-                <li>
-                    <a href="#home">Home</a>
-                </li>
-
-                <li>
-                    <a href="#features">Features</a>
-                </li>
-
-                <li>
-                    <a href="#about">About</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-            </ul>
-
-        </nav>
-
-    </header>
-
-
-    <!-- ================= MAIN CONTENT ================= -->
-    <main>
-
-        <!-- ================= HERO SECTION ================= -->
-        <section class="hero" id="home">
-
-            <div class="hero-content">
-
-                <p class="hero-label">
-                    INNOVATE • CREATE • GROW
-                </p>
-
-                <h1>
-                    Build Your
-                    <span>Digital Future</span>
-                </h1>
-
-                <p class="hero-description">
-                    We create modern, responsive and high-performance
-                    digital experiences that help businesses grow.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#features" class="btn btn-primary">
-                        Explore Features
-                    </a>
-
-                    <a href="#contact" class="btn btn-secondary">
-                        Contact Us
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- Hero visual -->
-            <div class="hero-visual" aria-hidden="true">
-
-                <div class="dashboard-card">
-
-                    <div class="dashboard-header">
-                        <span class="status-dot"></span>
-                        <span>Dashboard</span>
-                    </div>
-
-                    <div class="chart">
-                        <span class="bar bar-1"></span>
-                        <span class="bar bar-2"></span>
-                        <span class="bar bar-3"></span>
-                        <span class="bar bar-4"></span>
-                        <span class="bar bar-5"></span>
-                        <span class="bar bar-6"></span>
-                    </div>
-
-                    <div class="dashboard-footer">
-                        <div>
-                            <small>Growth</small>
-                            <strong>+48.6%</strong>
-                        </div>
-
-                        <div>
-                            <small>Users</small>
-                            <strong>24.8K</strong>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="floating-card card-one">
-                    <span>⚡</span>
-                    <div>
-                        <strong>Fast</strong>
-                        <small>Performance</small>
-                    </div>
-                </div>
-
-                <div class="floating-card card-two">
-                    <span>✓</span>
-                    <div>
-                        <strong>98%</strong>
-                        <small>Success Rate</small>
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= FEATURES SECTION ================= -->
-        <section class="features section" id="features">
-
-            <div class="section-heading">
-
-                <p class="section-label">
-                    WHY TECHNOVA
-                </p>
-
-                <h2>
-                    Everything You Need
-                </h2>
-
-                <p>
-                    Powerful solutions designed to help your business
-                    succeed in the digital world.
-                </p>
-
-            </div>
-
-
-            <div class="feature-grid">
-
-                <!-- Feature 1 -->
-                <article class="feature-card">
-
-                    <div class="feature-icon blue">
-                        ⚡
-                    </div>
-
-                    <h3>
-                        Fast Performance
-                    </h3>
-
-                    <p>
-                        Lightweight and optimized solutions provide
-                        a fast and smooth user experience.
-                    </p>
-
-                    <a href="#contact" class="feature-link">
-                        Learn More →
-                    </a>
-
-                </article>
-
-
-                <!-- Feature 2 -->
-                <article class="feature-card">
-
-                    <div class="feature-icon purple">
-                        ◈
-                    </div>
-
-                    <h3>
-                        Responsive Design
-                    </h3>
-
-                    <p>
-                        Beautiful layouts that automatically adapt
-                        to desktops, tablets and mobile devices.
-                    </p>
-
-                    <a href="#contact" class="feature-link">
-                        Learn More →
-                    </a>
-
-                </article>
-
-
-                <!-- Feature 3 -->
-                <article class="feature-card">
-
-                    <div class="feature-icon green">
-                        ✓
-                    </div>
-
-                    <h3>
-                        Modern Technology
-                    </h3>
-
-                    <p>
-                        Built using modern web standards and clean
-                        development practices.
-                    </p>
-
-                    <a href="#contact" class="feature-link">
-                        Learn More →
-                    </a>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= ABOUT SECTION ================= -->
-        <section class="about section" id="about">
-
-            <div class="about-visual" aria-hidden="true">
-
-                <div class="about-circle circle-large"></div>
-                <div class="about-circle circle-small"></div>
-
-                <div class="about-stat">
-                    <strong>5+</strong>
-                    <span>Years Experience</span>
-                </div>
-
-            </div>
-
-
-            <div class="about-content">
-
-                <p class="section-label">
-                    ABOUT US
-                </p>
-
-                <h2>
-                    Turning Ideas Into
-                    <span>Digital Experiences</span>
-                </h2>
-
-                <p>
-                    TechNova is a fictional digital solutions company
-                    created as part of a responsive frontend development
-                    project.
-                </p>
-
-                <p>
-                    Our approach focuses on creating websites that are
-                    visually appealing, accessible, responsive and easy
-                    to use.
-                </p>
-
-                <ul class="check-list">
-
-                    <li>
-                        <span>✓</span>
-                        Clean and maintainable code
-                    </li>
-
-                    <li>
-                        <span>✓</span>
-                        Mobile-first responsive design
-                    </li>
-
-                    <li>
-                        <span>✓</span>
-                        User-focused experiences
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= CTA SECTION ================= -->
-        <section class="cta section" id="contact">
-
-            <div class="cta-content">
-
-                <p class="section-label">
-                    GET STARTED
-                </p>
-
-                <h2>
-                    Ready to Build Something Amazing?
-                </h2>
-
-                <p>
-                    Let's create a modern digital experience together.
-                </p>
-
-                <a href="mailto:hello@technova.example" class="btn btn-light">
-                    Contact Us
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-
-        <div class="footer-content">
-
-            <div class="footer-brand">
-
-                <a href="#home" class="logo">
-                    Tech<span>Nova</span>
-                </a>
-
-                <p>
-                    Building better digital experiences.
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h3>Quick Links</h3>
-
-                <a href="#home">Home</a>
-                <a href="#features">Features</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-
-            </div>
-
-
-            <div class="footer-contact">
-
-                <h3>Contact</h3>
-
-                <p>hello@technova.example</p>
-                <p>+91 98765 43210</p>
-
-            </div>
-
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="logo">TASKFLOW</a>
+      <button 
+        id="menuButton" 
+        class="menu-button" 
+        aria-label="Toggle navigation menu" 
+        aria-expanded="false" 
+        aria-controls="mainNav">
+        ☰
+      </button>
+      <nav id="mainNav" class="nav" aria-label="Main Navigation">
+        <a href="#dashboard" class="nav-link active">Dashboard</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#reports" class="nav-link">Reports</a>
+        <a href="#user" class="nav-link">User Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container" id="dashboard">
+    <section class="page-header">
+      <h1>Dashboard</h1>
+      <p>Manage and monitor your active projects and deliverables.</p>
+    </section>
+
+    <!-- Stat Cards -->
+    <section class="stats-grid" aria-label="Dashboard Key Statistics">
+      <div class="card stat-card">
+        <h3>Total Projects</h3>
+        <p class="stat-number" id="totalProjects">-</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Active Projects</h3>
+        <p class="stat-number" id="activeProjects">-</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Completed Projects</h3>
+        <p class="stat-number" id="completedProjects">-</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Average Progress</h3>
+        <p class="stat-number" id="avgProgress">-%</p>
+      </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <div class="dashboard-content">
+      <!-- Progress Bar Visualizations -->
+      <section class="card progress-section" aria-labelledby="progressHeading">
+        <h2 id="progressHeading">Project Progress Overview</h2>
+        <div id="progressList" class="progress-list">
+          <p class="state-message">Loading progress data...</p>
+        </div>
+      </section>
+
+      <!-- Table Controls & Data -->
+      <section class="card overview-section" aria-labelledby="overviewHeading">
+        <h2 id="overviewHeading">Project Management Overview</h2>
+        
+        <!-- Controls -->
+        <div class="controls-grid">
+          <div class="control-group">
+            <label for="searchInput">Search Projects</label>
+            <input type="search" id="searchInput" placeholder="Search by name..." aria-label="Search projects by name">
+          </div>
+          <div class="control-group">
+            <label for="filterStatus">Status Filter</label>
+            <select id="filterStatus" aria-label="Filter projects by status">
+              <option value="All">All Statuses</option>
+              <option value="Active">Active</option>
+              <option value="Completed">Completed</option>
+              <option value="Pending">Pending</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="sortCriteria">Sort By</label>
+            <select id="sortCriteria" aria-label="Sort project list">
+              <option value="name">Project Name</option>
+              <option value="progress">Progress (High-Low)</option>
+              <option value="deadline">Deadline</option>
+              <option value="status">Status</option>
+            </select>
+          </div>
         </div>
 
+        <!-- Dynamic Status Notification -->
+        <div id="statusMessage" class="state-message hidden" role="status" aria-live="polite"></div>
 
-        <div class="footer-bottom">
-
-            <p>
-                © <span id="currentYear">2026</span>
-                TechNova. All rights reserved.
-            </p>
-
+        <!-- Table View -->
+        <div class="table-responsive">
+          <table class="project-table">
+            <thead>
+              <tr>
+                <th scope="col">Project</th>
+                <th scope="col">Category</th>
+                <th scope="col">Status</th>
+                <th scope="col">Progress</th>
+                <th scope="col">Team</th>
+                <th scope="col">Deadline</th>
+              </tr>
+            </thead>
+            <tbody id="projectTableBody">
+              <!-- Dynamically rendered -->
+            </tbody>
+          </table>
         </div>
+      </section>
+    </div>
+  </main>
 
-    </footer>
-
+  <footer class="footer">
+    <p>&copy; 2026 TaskFlow Systems. All rights reserved.</p>
+  </footer>
 </body>
 </html>
-```
