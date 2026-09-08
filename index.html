@@ -11,177 +11,397 @@
 
     <meta
         name="description"
-        content="A fast and responsive product landing page."
+        content="TechNova - Modern responsive digital solutions for businesses."
     >
 
-    <title>Performance Optimized Website</title>
+    <title>TechNova | Digital Solutions</title>
 
-    <!-- Critical stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- JavaScript does not block HTML parsing -->
+    <!-- defer prevents JavaScript from blocking HTML parsing -->
     <script src="js/script.js" defer></script>
 </head>
 
 <body>
 
+    <!-- ================= HEADER ================= -->
     <header class="header">
-        <nav class="navbar">
-            <a href="#" class="logo">SpeedWeb</a>
 
+        <nav class="navbar" aria-label="Main navigation">
+
+            <a href="#home" class="logo">
+                Tech<span>Nova</span>
+            </a>
+
+            <!-- Mobile menu button -->
             <button
                 class="menu-toggle"
                 id="menuToggle"
-                aria-label="Toggle navigation"
+                type="button"
+                aria-label="Open navigation menu"
                 aria-expanded="false"
+                aria-controls="navLinks"
             >
-                ☰
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
 
+            <!-- Navigation links -->
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#features">Features</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
             </ul>
+
         </nav>
+
     </header>
 
+
+    <!-- ================= MAIN CONTENT ================= -->
     <main>
 
+        <!-- ================= HERO SECTION ================= -->
         <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>Build Faster Websites</h1>
 
-                <p>
-                    A lightweight frontend project optimized for
-                    speed, responsiveness, and better user experience.
+            <div class="hero-content">
+
+                <p class="hero-label">
+                    INNOVATE • CREATE • GROW
                 </p>
 
-                <a href="#features" class="btn">
-                    Explore Features
-                </a>
+                <h1>
+                    Build Your
+                    <span>Digital Future</span>
+                </h1>
+
+                <p class="hero-description">
+                    We create modern, responsive and high-performance
+                    digital experiences that help businesses grow.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#features" class="btn btn-primary">
+                        Explore Features
+                    </a>
+
+                    <a href="#contact" class="btn btn-secondary">
+                        Contact Us
+                    </a>
+
+                </div>
+
             </div>
 
-            <div class="hero-image">
-                <img
-                    src="images/hero.jpg"
-                    width="800"
-                    height="500"
-                    fetchpriority="high"
-                    alt="Modern web development workspace"
-                >
+
+            <!-- Hero visual -->
+            <div class="hero-visual" aria-hidden="true">
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-header">
+                        <span class="status-dot"></span>
+                        <span>Dashboard</span>
+                    </div>
+
+                    <div class="chart">
+                        <span class="bar bar-1"></span>
+                        <span class="bar bar-2"></span>
+                        <span class="bar bar-3"></span>
+                        <span class="bar bar-4"></span>
+                        <span class="bar bar-5"></span>
+                        <span class="bar bar-6"></span>
+                    </div>
+
+                    <div class="dashboard-footer">
+                        <div>
+                            <small>Growth</small>
+                            <strong>+48.6%</strong>
+                        </div>
+
+                        <div>
+                            <small>Users</small>
+                            <strong>24.8K</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="floating-card card-one">
+                    <span>⚡</span>
+                    <div>
+                        <strong>Fast</strong>
+                        <small>Performance</small>
+                    </div>
+                </div>
+
+                <div class="floating-card card-two">
+                    <span>✓</span>
+                    <div>
+                        <strong>98%</strong>
+                        <small>Success Rate</small>
+                    </div>
+                </div>
+
             </div>
+
         </section>
 
-        <section class="features" id="features">
-            <h2>Performance Features</h2>
+
+        <!-- ================= FEATURES SECTION ================= -->
+        <section class="features section" id="features">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    WHY TECHNOVA
+                </p>
+
+                <h2>
+                    Everything You Need
+                </h2>
+
+                <p>
+                    Powerful solutions designed to help your business
+                    succeed in the digital world.
+                </p>
+
+            </div>
+
 
             <div class="feature-grid">
 
+                <!-- Feature 1 -->
                 <article class="feature-card">
-                    <img
-                        src="images/feature-1.jpg"
-                        width="500"
-                        height="300"
-                        loading="lazy"
-                        decoding="async"
-                        alt="Optimized images"
-                    >
 
-                    <h3>Optimized Images</h3>
+                    <div class="feature-icon blue">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Fast Performance
+                    </h3>
 
                     <p>
-                        Images are compressed and lazy-loaded
-                        when they are outside the viewport.
+                        Lightweight and optimized solutions provide
+                        a fast and smooth user experience.
                     </p>
+
+                    <a href="#contact" class="feature-link">
+                        Learn More →
+                    </a>
+
                 </article>
 
-                <article class="feature-card">
-                    <img
-                        src="images/feature-2.jpg"
-                        width="500"
-                        height="300"
-                        loading="lazy"
-                        decoding="async"
-                        alt="Clean JavaScript"
-                    >
 
-                    <h3>Efficient JavaScript</h3>
+                <!-- Feature 2 -->
+                <article class="feature-card">
+
+                    <div class="feature-icon purple">
+                        ◈
+                    </div>
+
+                    <h3>
+                        Responsive Design
+                    </h3>
 
                     <p>
-                        JavaScript is loaded asynchronously using
-                        the defer attribute.
+                        Beautiful layouts that automatically adapt
+                        to desktops, tablets and mobile devices.
                     </p>
+
+                    <a href="#contact" class="feature-link">
+                        Learn More →
+                    </a>
+
                 </article>
 
-                <article class="feature-card">
-                    <img
-                        src="images/feature-3.jpg"
-                        width="500"
-                        height="300"
-                        loading="lazy"
-                        decoding="async"
-                        alt="Responsive website"
-                    >
 
-                    <h3>Responsive Design</h3>
+                <!-- Feature 3 -->
+                <article class="feature-card">
+
+                    <div class="feature-icon green">
+                        ✓
+                    </div>
+
+                    <h3>
+                        Modern Technology
+                    </h3>
 
                     <p>
-                        A simple DOM and efficient CSS provide
-                        a smooth experience across devices.
+                        Built using modern web standards and clean
+                        development practices.
                     </p>
+
+                    <a href="#contact" class="feature-link">
+                        Learn More →
+                    </a>
+
                 </article>
 
             </div>
+
         </section>
 
-        <section class="about" id="about">
-            <h2>About This Project</h2>
 
-            <p>
-                This project demonstrates practical frontend
-                performance optimization using HTML, CSS,
-                and JavaScript.
-            </p>
+        <!-- ================= ABOUT SECTION ================= -->
+        <section class="about section" id="about">
+
+            <div class="about-visual" aria-hidden="true">
+
+                <div class="about-circle circle-large"></div>
+                <div class="about-circle circle-small"></div>
+
+                <div class="about-stat">
+                    <strong>5+</strong>
+                    <span>Years Experience</span>
+                </div>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <p class="section-label">
+                    ABOUT US
+                </p>
+
+                <h2>
+                    Turning Ideas Into
+                    <span>Digital Experiences</span>
+                </h2>
+
+                <p>
+                    TechNova is a fictional digital solutions company
+                    created as part of a responsive frontend development
+                    project.
+                </p>
+
+                <p>
+                    Our approach focuses on creating websites that are
+                    visually appealing, accessible, responsive and easy
+                    to use.
+                </p>
+
+                <ul class="check-list">
+
+                    <li>
+                        <span>✓</span>
+                        Clean and maintainable code
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Mobile-first responsive design
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        User-focused experiences
+                    </li>
+
+                </ul>
+
+            </div>
+
         </section>
 
-        <section class="contact" id="contact">
-            <h2>Contact</h2>
 
-            <form id="contactForm">
-                <label for="name">Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                >
+        <!-- ================= CTA SECTION ================= -->
+        <section class="cta section" id="contact">
 
-                <label for="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                >
+            <div class="cta-content">
 
-                <button type="submit" class="btn">
-                    Submit
-                </button>
-            </form>
+                <p class="section-label">
+                    GET STARTED
+                </p>
 
-            <p id="formMessage"></p>
+                <h2>
+                    Ready to Build Something Amazing?
+                </h2>
+
+                <p>
+                    Let's create a modern digital experience together.
+                </p>
+
+                <a href="mailto:hello@technova.example" class="btn btn-light">
+                    Contact Us
+                </a>
+
+            </div>
+
         </section>
 
     </main>
 
+
+    <!-- ================= FOOTER ================= -->
     <footer class="footer">
-        <p>&copy; 2026 SpeedWeb. All rights reserved.</p>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <a href="#home" class="logo">
+                    Tech<span>Nova</span>
+                </a>
+
+                <p>
+                    Building better digital experiences.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>Quick Links</h3>
+
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h3>Contact</h3>
+
+                <p>hello@technova.example</p>
+                <p>+91 98765 43210</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © <span id="currentYear">2026</span>
+                TechNova. All rights reserved.
+            </p>
+
+        </div>
+
     </footer>
 
 </body>
 </html>
 ```
-
-
