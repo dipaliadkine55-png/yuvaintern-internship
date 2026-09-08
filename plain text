@@ -1,0 +1,10 @@
+taskflow-dashboard/
+│
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── app.js
+├── data/
+│   └── projects.json
+└── README.md
