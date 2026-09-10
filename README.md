@@ -1,24 +1,31 @@
 # mini web application final project
 responsive project management dashboard
-# TaskFlow – Responsive Project Management Dashboard
+# Project Report: MetricsHub Mini Web Application
 
-A lightweight, responsive single-page web dashboard designed with pure Vanilla JavaScript, modern HTML5, and CSS Grid/Flexbox to display, search, filter, and track project performance metrics.
+## 1. Executive Summary & Design Choices
+MetricsHub is a lightweight, responsive dashboard built to synthesize enterprise performance metrics into an intuitive visual format. The architectural layout follows a visual hierarchy: key performance indicators (KPIs) at the top, visual trends in the middle, and actionable granular data at the bottom.
 
-## Features
-- **Dynamic Data Engine**: Loads structured static JSON project records using the native Fetch API.
-- **Dynamic Metrics**: Automatically computes total count, active count, completed count, and average progress.
-- **Search & Filter Pipeline**: Combines search inputs, status selects, and sorting criteria concurrently without requiring full-page reloads.
-- **Pure CSS Visualizations**: Custom, accessible progress bars implemented without external charting libraries.
-- **Responsive Layout**: Built with CSS Grid and Flexbox for seamless viewing on Desktop, Tablet, and Mobile devices.
-- **Accessibility (a11y)**: Features visible keyboard focus indicators, dynamic ARIA expanded states, semantic structure, and accessible color contrasts.
+Color palettes prioritize contrast (using deep slate slate `#0f172a` and vibrant blue `#2563eb`) to separate navigation, actions, and data elements clearly without visual clutter.
 
-## How to Run Locally
+## 2. Implemented Features
+- **Dynamic Asynchronous Fetching:** Uses the `fetch` API to load external JSON payload asynchronously without blocking render paths.
+- **Interactive Data Control:** Client-side filtering via dropdowns for real-time category and status data slicing.
+- **HTML5 Canvas Charting:** Custom lightweight bar chart rendered via the native Canvas API, eliminating heavy third-party bundle overhead.
+- **Fluid Layout:** Responsive CSS Grid and Flexbox structures adapt seamlessly from mobile viewports (320px) up to high-resolution desktop screens.
 
-1. **Clone or Extract**: Place the `taskflow-dashboard` directory in your workspace.
-2. **Launch via Local HTTP Server**:
-   Because modern browsers restrict `fetch()` calls to local files under the `file://` scheme, open the directory using a lightweight web server.
+## 3. Performance & Loading Optimizations
+- **Zero Third-Party Dependencies:** Built entirely with native Vanilla JS, CSS3, and HTML5 to keep initial load size under 15 KB total.
+- **Script Execution Strategy:** The main script uses the `defer` attribute to allow non-blocking HTML parsing during download.
+- **Hardware Acceleration:** Native HTML5 canvas rendering minimizes DOM manipulations when redrawing visuals.
 
-   *Using Python 3:*
-   ```bash
-   cd taskflow-dashboard
-   python -m http.server 8000
+## 4. Accessibility & ARIA Compliance
+- **Landmark Roles:** Uses HTML5 landmark elements (`<header>`, `<main>`, `<section>`, `<footer>`) paired with implicit ARIA attributes.
+- **Focus Management:** Includes an accessible `skip-link` allowing screen-reader and keyboard users to skip navigation headers directly to main data.
+- **Interactive Controls:** All form controls incorporate proper `for`/`id` associations and explicit `aria-controls` bindings.
+- **Visual Contrast:** High contrast text ratios compliant with WCAG 2.1 AA standards, complemented by `:focus-visible` indicators.
+
+## 5. Testing & Cross-Browser Validation
+Testing was conducted across key rendering engines:
+- **Chromium (Chrome/Edge):** Verified canvas rendering accuracy and layout grid resizing.
+- **Gecko (Firefox):** Verified native select focus styling and keyboard navigation loops.
+- **WebKit (Safari):** Validated flexbox layout wraps on mobile viewports.

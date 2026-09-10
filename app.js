@@ -1,170 +1,110 @@
-/**
- * TaskFlow Dashboard Application Engine
- */
-document.addEventListener("DOMContentLoaded", () => {
-  let allProjects = [];
+document.addEventListener('DOMContentLoaded', () => {
+  let appData = { summary: {}, metrics: [], chartData: [] };
 
   // DOM Elements
-  const totalProjectsEl = document.getElementById("totalProjects");
-  const activeProjectsEl = document.getElementById("activeProjects");
-  const completedProjectsEl = document.getElementById("completedProjects");
-  const avgProgressEl = document.getElementById("avgProgress");
+  const kpiRevenue = document.getElementById('kpi-revenue');
+  const kpiUsers = document.getElementById('kpi-users');
+  const kpiConversion = document.getElementById('kpi-conversion');
+  const tableBody = document.getElementById('table-body');
+  const categoryFilter = document.getElementById('category-filter');
+  const statusFilter = document.getElementById('status-filter');
 
-  const progressListEl = document.getElementById("progressList");
-  const tableBodyEl = document.getElementById("projectTableBody");
-  const statusMessageEl = document.getElementById("statusMessage");
-
-  const searchInput = document.getElementById("searchInput");
-  const filterStatus = document.getElementById("filterStatus");
-  const sortCriteria = document.getElementById("sortCriteria");
-
-  const menuButton = document.getElementById("menuButton");
-  const mainNav = document.getElementById("mainNav");
-
-  // Mobile Navigation Toggle
-  menuButton.addEventListener("click", () => {
-    const expanded = menuButton.getAttribute("aria-expanded") === "true";
-    menuButton.setAttribute("aria-expanded", !expanded);
-    mainNav.classList.toggle("active");
-  });
-
-  // Fetch Project Data
-  async function fetchProjects() {
+  // Fetch Data
+  async function loadData() {
     try {
-      showStatus("Loading project data...");
-      const response = await fetch("data/projects.json");
+      const response = await fetch('data.json');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      appData = await response.json();
 
-      if (!response.ok) {
-        throw new Error("Failed to load project database.");
-      }
-
-      allProjects = await response.json();
-      hideStatus();
-      
-      calculateStats(allProjects);
-      renderProgressBars(allProjects);
-      applyPipeline();
+      renderKPIs(appData.summary);
+      renderTable(appData.metrics);
+      renderChart(appData.chartData);
     } catch (error) {
-      showStatus(`Error: ${error.message}`, true);
+      console.error('Failed to load dashboard data:', error);
+      tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:red;">Failed to load data. Please serve files via a local HTTP server.</td></tr>`;
     }
   }
 
-  // Calculate Dashboard Metrics
-  function calculateStats(projects) {
-    const total = projects.length;
-    const active = projects.filter(p => p.status === "Active").length;
-    const completed = projects.filter(p => p.status === "Completed").length;
-    
-    const sumProgress = projects.reduce((acc, p) => acc + p.progress, 0);
-    const avg = total > 0 ? Math.round(sumProgress / total) : 0;
-
-    totalProjectsEl.textContent = String(total).padStart(2, "0");
-    activeProjectsEl.textContent = String(active).padStart(2, "0");
-    completedProjectsEl.textContent = String(completed).padStart(2, "0");
-    avgProgressEl.textContent = `${avg}%`;
+  // Render KPI Metrics
+  function renderKPIs(summary) {
+    kpiRevenue.textContent = `$${summary.totalRevenue.toLocaleString()}`;
+    kpiUsers.textContent = summary.activeUsers.toLocaleString();
+    kpiConversion.textContent = `${summary.conversionRate}%`;
   }
 
-  // Render CSS-Based Progress Bars
-  function renderProgressBars(projects) {
-    progressListEl.innerHTML = "";
+  // Render Table with Filtering
+  function renderTable(metrics) {
+    const selectedCategory = categoryFilter.value;
+    const selectedStatus = statusFilter.value;
 
-    if (projects.length === 0) {
-      progressListEl.innerHTML = '<p class="state-message">No progress data available.</p>';
+    const filtered = metrics.filter(item => {
+      const matchCategory = selectedCategory === 'All' || item.category === selectedCategory;
+      const matchStatus = selectedStatus === 'All' || item.status === selectedStatus;
+      return matchCategory && matchStatus;
+    });
+
+    if (filtered.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No matching metrics found.</td></tr>`;
       return;
     }
 
-    projects.forEach(project => {
-      const item = document.createElement("div");
-      item.className = "progress-item";
-      item.innerHTML = `
-        <div class="progress-info">
-          <span>${escapeHTML(project.name)}</span>
-          <span>${project.progress}%</span>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: ${project.progress}%"></div>
-        </div>
-      `;
-      progressListEl.appendChild(item);
+    tableBody.innerHTML = filtered.map(item => `
+      <tr>
+        <td><strong>${item.name}</strong></td>
+        <td>${item.category}</td>
+        <td><span class="status-tag ${item.status.toLowerCase()}">${item.status}</span></td>
+        <td class="num-col">$${item.value.toLocaleString()}</td>
+        <td class="num-col" style="color: ${item.growth >= 0 ? '#10b981' : '#ef4444'}">
+          ${item.growth > 0 ? '+' : ''}${item.growth}%
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  // Draw Light Canvas Chart
+  function renderChart(data) {
+    const canvas = document.getElementById('revenueChart');
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext('2d');
+
+    const padding = 40;
+    const width = canvas.width - padding * 2;
+    const height = canvas.height - padding * 2;
+    const maxVal = Math.max(...data.map(d => d.value)) * 1.1;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw axes
+    ctx.beginPath();
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.lineWidth = 1;
+    ctx.moveTo(padding, padding);
+    ctx.lineTo(padding, canvas.height - padding);
+    ctx.lineTo(canvas.width - padding, canvas.height - padding);
+    ctx.stroke();
+
+    // Draw Bars
+    const barWidth = (width / data.length) - 20;
+    data.forEach((d, index) => {
+      const barHeight = (d.value / maxVal) * height;
+      const x = padding + index * (barWidth + 20) + 10;
+      const y = canvas.height - padding - barHeight;
+
+      ctx.fillStyle = '#2563eb';
+      ctx.fillRect(x, y, barWidth, barHeight);
+
+      // Label
+      ctx.fillStyle = '#64748b';
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(d.label, x + barWidth / 2, canvas.height - padding + 15);
     });
   }
 
-  // Render Table Rows
-  function renderTable(projects) {
-    tableBodyEl.innerHTML = "";
-
-    if (projects.length === 0) {
-      showStatus("No matching projects found. Try adjusting your filters.");
-      return;
-    }
-
-    hideStatus();
-
-    projects.forEach(project => {
-      const row = document.createElement("tr");
-      const statusClass = `badge-${project.status.toLowerCase()}`;
-
-      row.innerHTML = `
-        <td><strong>${escapeHTML(project.name)}</strong></td>
-        <td>${escapeHTML(project.category)}</td>
-        <td><span class="badge ${statusClass}">${project.status}</span></td>
-        <td>${project.progress}%</td>
-        <td>${escapeHTML(project.team)}</td>
-        <td>${project.deadline}</td>
-      `;
-      tableBodyEl.appendChild(row);
-    });
-  }
-
-  // Unified Filtering, Sorting, and Search Pipeline
-  function applyPipeline() {
-    const query = searchInput.value.trim().toLowerCase();
-    const statusFilter = filterStatus.value;
-    const sortBy = sortCriteria.value;
-
-    let filtered = allProjects.filter(project => {
-      const matchesSearch = project.name.toLowerCase().includes(query);
-      const matchesStatus = statusFilter === "All" || project.status === statusFilter;
-      return matchesSearch && matchesStatus;
-    });
-
-    filtered.sort((a, b) => {
-      if (sortBy === "progress") return b.progress - a.progress;
-      if (sortBy === "deadline") return new Date(a.deadline) - new Date(b.deadline);
-      if (sortBy === "status") return a.status.localeCompare(b.status);
-      return a.name.localeCompare(b.name);
-    });
-
-    renderTable(filtered);
-  }
-
-  // State Notifications Helper
-  function showStatus(message, isError = false) {
-    statusMessageEl.textContent = message;
-    statusMessageEl.classList.remove("hidden");
-    if (isError) {
-      statusMessageEl.style.color = "#dc2626";
-    } else {
-      statusMessageEl.style.color = "var(--text-muted)";
-    }
-  }
-
-  function hideStatus() {
-    statusMessageEl.classList.add("hidden");
-  }
-
-  // Utility to prevent XSS
-  function escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, 
-      tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
-    );
-  }
-
-  // Event Listeners for Dynamic Control
-  searchInput.addEventListener("input", applyPipeline);
-  filterStatus.addEventListener("change", applyPipeline);
-  sortCriteria.addEventListener("change", applyPipeline);
+  // Event Listeners
+  categoryFilter.addEventListener('change', () => renderTable(appData.metrics));
+  statusFilter.addEventListener('change', () => renderTable(appData.metrics));
 
   // Initialize
-  fetchProjects();
+  loadData();
 });

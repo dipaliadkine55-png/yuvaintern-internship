@@ -1,0 +1,1 @@
+Compress-Archive -Path mini-web-app\* -DestinationPath mini-web-app.zip

@@ -3,126 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TaskFlow – Project Management Dashboard</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/app.js" defer></script>
+  <meta name="description" content="Interactive, accessible analytics dashboard built with modern web standards.">
+  <title>MetricsHub | Enterprise Analytics Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navigation Header -->
-  <header class="header">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner" class="app-header">
     <div class="header-container">
-      <a href="#" class="logo">TASKFLOW</a>
-      <button 
-        id="menuButton" 
-        class="menu-button" 
-        aria-label="Toggle navigation menu" 
-        aria-expanded="false" 
-        aria-controls="mainNav">
-        ☰
-      </button>
-      <nav id="mainNav" class="nav" aria-label="Main Navigation">
-        <a href="#dashboard" class="nav-link active">Dashboard</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#reports" class="nav-link">Reports</a>
-        <a href="#user" class="nav-link">User Profile</a>
-      </nav>
+      <h1>MetricsHub Dashboard</h1>
+      <span class="badge" aria-label="System status operational">Live System</span>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="container" id="dashboard">
-    <section class="page-header">
-      <h1>Dashboard</h1>
-      <p>Manage and monitor your active projects and deliverables.</p>
+  <main id="main-content" class="app-container" role="main">
+    <!-- Summary Cards -->
+    <section class="kpi-grid" aria-label="Key Performance Indicators">
+      <article class="kpi-card">
+        <h2>Total Revenue</h2>
+        <p class="kpi-value" id="kpi-revenue">--</p>
+      </article>
+      <article class="kpi-card">
+        <h2>Active Users</h2>
+        <p class="kpi-value" id="kpi-users">--</p>
+      </article>
+      <article class="kpi-card">
+        <h2>Conversion Rate</h2>
+        <p class="kpi-value" id="kpi-conversion">--</p>
+      </article>
     </section>
 
-    <!-- Stat Cards -->
-    <section class="stats-grid" aria-label="Dashboard Key Statistics">
-      <div class="card stat-card">
-        <h3>Total Projects</h3>
-        <p class="stat-number" id="totalProjects">-</p>
-      </div>
-      <div class="card stat-card">
-        <h3>Active Projects</h3>
-        <p class="stat-number" id="activeProjects">-</p>
-      </div>
-      <div class="card stat-card">
-        <h3>Completed Projects</h3>
-        <p class="stat-number" id="completedProjects">-</p>
-      </div>
-      <div class="card stat-card">
-        <h3>Average Progress</h3>
-        <p class="stat-number" id="avgProgress">-%</p>
+    <!-- Visual Analytics -->
+    <section class="panel chart-panel" aria-labelledby="chart-heading">
+      <h2 id="chart-heading">6-Month Revenue Trend</h2>
+      <div class="chart-wrapper">
+        <canvas id="revenueChart" width="600" height="250" aria-label="Bar chart showing 6-month revenue growth from January to June" role="img"></canvas>
       </div>
     </section>
 
-    <!-- Main Content Layout -->
-    <div class="dashboard-content">
-      <!-- Progress Bar Visualizations -->
-      <section class="card progress-section" aria-labelledby="progressHeading">
-        <h2 id="progressHeading">Project Progress Overview</h2>
-        <div id="progressList" class="progress-list">
-          <p class="state-message">Loading progress data...</p>
-        </div>
-      </section>
+    <!-- Interactive Data Table -->
+    <section class="panel table-panel" aria-labelledby="table-heading">
+      <div class="table-header-controls">
+        <h2 id="table-heading">Product Performance</h2>
+        <div class="controls-group">
+          <label for="category-filter">Category:</label>
+          <select id="category-filter" aria-controls="data-table">
+            <option value="All">All Categories</option>
+            <option value="Software">Software</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="Services">Services</option>
+          </select>
 
-      <!-- Table Controls & Data -->
-      <section class="card overview-section" aria-labelledby="overviewHeading">
-        <h2 id="overviewHeading">Project Management Overview</h2>
-        
-        <!-- Controls -->
-        <div class="controls-grid">
-          <div class="control-group">
-            <label for="searchInput">Search Projects</label>
-            <input type="search" id="searchInput" placeholder="Search by name..." aria-label="Search projects by name">
-          </div>
-          <div class="control-group">
-            <label for="filterStatus">Status Filter</label>
-            <select id="filterStatus" aria-label="Filter projects by status">
-              <option value="All">All Statuses</option>
-              <option value="Active">Active</option>
-              <option value="Completed">Completed</option>
-              <option value="Pending">Pending</option>
-            </select>
-          </div>
-          <div class="control-group">
-            <label for="sortCriteria">Sort By</label>
-            <select id="sortCriteria" aria-label="Sort project list">
-              <option value="name">Project Name</option>
-              <option value="progress">Progress (High-Low)</option>
-              <option value="deadline">Deadline</option>
-              <option value="status">Status</option>
-            </select>
-          </div>
+          <label for="status-filter">Status:</label>
+          <select id="status-filter" aria-controls="data-table">
+            <option value="All">All Statuses</option>
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Inactive">Inactive</option>
+          </select>
         </div>
+      </div>
 
-        <!-- Dynamic Status Notification -->
-        <div id="statusMessage" class="state-message hidden" role="status" aria-live="polite"></div>
-
-        <!-- Table View -->
-        <div class="table-responsive">
-          <table class="project-table">
-            <thead>
-              <tr>
-                <th scope="col">Project</th>
-                <th scope="col">Category</th>
-                <th scope="col">Status</th>
-                <th scope="col">Progress</th>
-                <th scope="col">Team</th>
-                <th scope="col">Deadline</th>
-              </tr>
-            </thead>
-            <tbody id="projectTableBody">
-              <!-- Dynamically rendered -->
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
+      <div class="table-responsive">
+        <table id="data-table" aria-describedby="table-heading">
+          <thead>
+            <tr>
+              <th scope="col">Product Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="num-col">Value ($)</th>
+              <th scope="col" class="num-col">Growth (%)</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Dynamic Injection -->
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <p>&copy; 2026 TaskFlow Systems. All rights reserved.</p>
+  <footer role="contentinfo" class="app-footer">
+    <p>&copy; 2026 MetricsHub Inc. All rights reserved. Built for accessibility and speed.</p>
   </footer>
+
+  <script src="app.js" defer></script>
 </body>
 </html>
